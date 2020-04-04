@@ -5,7 +5,7 @@ import { getRunner} from "../../actions/runner";
 
 export class PyCode extends Component {
     static propTypes = {
-        runner: PropTypes.object.isRequired,
+        runner: PropTypes.array.isRequired,
         getRunner: PropTypes.func.isRequired
     };
 

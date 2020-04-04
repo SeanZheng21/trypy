@@ -17,7 +17,10 @@ def process_code(request, format='application/json'):
     """
     A view that can accept POST requests with JSON content.
     """
-    runner = Runner(request.data['python_code'])
+    if 'python_code' in request.data:
+        runner = Runner(request.data['python_code'])
+    else:
+        runner = Runner('')
     try:
         execution_res = runner.execute()
         success = execution_res.strip() != ''
