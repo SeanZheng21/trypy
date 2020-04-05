@@ -19,7 +19,7 @@ Response:\
     "created_at": "2020-04-04T08:49:16.621770Z"
 }
 
-GET http://127.0.0.1:8000/api/code?search=1
+GET http://127.0.0.1:8000/api/code?search=1 \
 [
     {
         "id": 1,

@@ -5,7 +5,12 @@ import { getRunner} from "../../actions/runner";
 
 export class PyCode extends Component {
     static propTypes = {
-        runner: PropTypes.array.isRequired,
+        // runner: PropTypes.arrayOf(
+        //     PropTypes.shape({
+        //         execution_result: PropTypes.string.isRequired,
+        //         success: PropTypes.bool.isRequired
+        //     }).isRequired
+        // ).isRequired,
         getRunner: PropTypes.func.isRequired
     };
 
@@ -48,7 +53,7 @@ export class PyCode extends Component {
                     <h3>
                         {this.props.runner['success'] ? 'Success' : 'Fail'}
                     </h3>
-                    <p>{ this.props.runner["execution result"]}</p>
+                    <p>{ this.props.runner["execution_result"]}</p>
                 </div>
             </Fragment>
         );

@@ -12,10 +12,10 @@ class TestViews(APITestCase):
         request = self.client.get('/api/process/', {"python_code": "print('hello world!')"})
         self.assertEqual(status.HTTP_200_OK, request.status_code)
         """{
-            "received program": {
+            "received_program": {
                 "python_code": "print('hello world!')"
             },
-            "execution result": "hello world!",
+            "execution_result": "hello world!",
             "success": true
         }"""
 

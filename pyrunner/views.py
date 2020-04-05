@@ -25,13 +25,13 @@ def process_code(request, format='application/json'):
         execution_res = runner.execute()
         success = execution_res.strip() != ''
         return Response({
-            'received program': request.data,
-            'execution result': execution_res,
+            'received_program': request.data,
+            'execution_result': execution_res,
             'success': success
         })
     except:
         return Response({
-            'received program': request.data,
-            'execution result': 'error',
+            'received_program': request.data,
+            'execution_result': 'error',
             'success': False
         })
