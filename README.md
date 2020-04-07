@@ -3,7 +3,38 @@
 Run Django: under trypy, use 'python manage.py runserver'\
 Run npm for development: use 'npm run dev'
 
-#Use Code API:
+# Use python code runner:
+## Success case:
+POST http://127.0.0.1:8000/api/process\
+{
+    "python_code": "print('hello world!')"
+}\
+Response:\
+{
+    "received_program": {
+        "python_code": "print('hello world!')"
+    },
+    "execution_result": "hello world!",
+    "execution_error": "",
+    "success": true
+}
+
+## Error case:
+POST http://127.0.0.1:8000/api/process\
+{
+    "python_code": "print(5/0)"
+}\
+Response:\
+{
+    "received_program": {
+        "python_code": "print(5/0)"
+    },
+    "execution_result": "",
+    "execution_error": "Traceback (most recent call last):\n  File \"/Users/Carlistle/Developer/PyCharmWorkspace/trypy/tempfile/code.txt\", line 1, in <module>\n    print(5/0)\nZeroDivisionError: division by zero",
+    "success": false
+}
+
+# Use Code API:
 POST http://127.0.0.1:8000/api/code  \
 {
 	"name": "hello",

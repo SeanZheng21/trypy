@@ -1,3 +1,3 @@
 #!/bin/bash
-CWD="/Users/Carlistle/Developer/PyCharmWorkspace/trypy"
-$CWD/interpreter/bin/python "$CWD/tempfile/code.txt" > $CWD/tempfile/res.txt
+CWD="/Users/Carlistle/Developer/PyCharmWorkspace/trypy/tempfile"
+bash "$CWD/runner.sh" > $CWD/error.txt

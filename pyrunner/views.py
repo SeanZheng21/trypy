@@ -25,17 +25,21 @@ def process_code(request, format='application/json'):
     else:
         runner = Runner('')
     try:
-        execution_res = runner.execute()
-        success = execution_res.strip() != ''
+        runner.execute()
+        execution_res = runner.get_result()
+        execution_err = runner.get_error_msg()
+        success = runner.is_success()
         return Response({
             'received_program': request.data,
             'execution_result': execution_res,
+            'execution_error': execution_err,
             'success': success
         })
     except:
         return Response({
             'received_program': request.data,
             'execution_result': 'error',
+            'execution_error': 'error',
             'success': False
         })
 
