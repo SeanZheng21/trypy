@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
         case DELETE_CODE:
             return  {
                 ...state,
-                code: state.code.filter(c => c.id !== action.payload)
+                code: state.code.filter(c => c.id !== action.payload.id)
             };
         case ADD_CODE:
             return {

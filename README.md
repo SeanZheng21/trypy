@@ -48,10 +48,23 @@ GET http://127.0.0.1:8000/api/code_detail/1 \
     }
 ]
 
-DELETE: http://127.0.0.1:8000/api/code_detail/4  \
-[
-]
+DELETE: http://127.0.0.1:8000/api/code_detail/10  \
+{
+    "id": 10,
+    "name": "foo",
+    "content": "print('foo')",
+    "owner": 1,
+    "created_at": "2020-04-07T10:40:10.133346Z"
+}
 
+Response:\
+{
+    "id": 10,
+    "name": "foo",
+    "content": "print('foo')",
+    "owner": 1,
+    "created_at": "2020-04-07T10:40:10.133346Z"
+}
 
 PUT:  http://127.0.0.1:8000/api/code_detail/2 \
 {

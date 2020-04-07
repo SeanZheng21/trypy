@@ -47,8 +47,10 @@ def code_detail(request, pk):
     except Code.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'DELETE':
+        serializer = PyrunnerSerializer(code)
+        d = serializer.data
         code.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT, data=d)
     elif request.method == 'GET':
         serializer = PyrunnerSerializer(code)
         return Response(serializer.data)
