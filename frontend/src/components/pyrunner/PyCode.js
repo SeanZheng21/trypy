@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getRunner} from "../../actions/runner";
+import { getRunner, getCode, deleteCode } from "../../actions/runner";
 
 export class PyCode extends Component {
     static propTypes = {
@@ -11,11 +11,15 @@ export class PyCode extends Component {
         //         success: PropTypes.bool.isRequired
         //     }).isRequired
         // ).isRequired,
-        getRunner: PropTypes.func.isRequired
+        code: PropTypes.array.isRequired,
+        getRunner: PropTypes.func.isRequired,
+        getCode: PropTypes.func.isRequired,
+        deleteCode: PropTypes.func.isRequired
     };
 
     componentDidMount() {
         this.props.getRunner();
+        this.props.getCode();
     }
 
     state = {
@@ -36,7 +40,8 @@ export class PyCode extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div>
+                <Fragment>
                 <h1>Write your Python code here!</h1>
                 <div>
                     <textarea rows="4" cols="50" value={this.state.code} onChange={this.handleChange}/>
@@ -56,12 +61,42 @@ export class PyCode extends Component {
                     <p>{ this.props.runner["execution_result"]}</p>
                 </div>
             </Fragment>
+            <Fragment>
+                <h2>Code</h2>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Content</th>
+                            <th />
+                        </tr>
+                    </thead>
+                    <tbody>
+                    { this.props.code.map( c => (
+                        <tr key={c.id}>
+                            <td>{c.id}</td>
+                            <td>{c.name}.py</td>
+                            <td>{c.content}</td>
+                            <td>
+                                <button className="btn btn-danger btn-sm" onClick={
+                                    this.props.deleteCode.bind(this, c.id)
+                                }>Delete</button>
+                            </td>
+                        </tr>
+                    )) }
+                    </tbody>
+                </table>
+            </Fragment>
+            </div>
+
         );
     }
 }
 
 const mapStateToProps = state => ({
-    runner: state.runner.runner
+    runner: state.runner.runner,
+    code: state.runner.code
 });
 
-export default connect(mapStateToProps, { getRunner })(PyCode);
+export default connect(mapStateToProps, { getRunner, getCode, deleteCode })(PyCode);
