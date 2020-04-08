@@ -39,6 +39,12 @@ export class PyCode extends Component {
     };
 
     render() {
+        let resParagraph;
+        if (this.props.runner['success']) {
+            resParagraph = <p>{ this.props.runner["execution_result"] }</p>
+        } else {
+            resParagraph = <p style={{color: "red"}}>{ this.props.runner["execution_error"] }</p>
+        }
         return (
             <div>
                 <Fragment>
@@ -54,11 +60,8 @@ export class PyCode extends Component {
                 </button>
                 <br/>
                 <div>
-                    <h2>Result:</h2>
-                    <h3>
-                        {this.props.runner['success'] ? 'Success' : 'Fail'}
-                    </h3>
-                    <p>{ this.props.runner["execution_result"]}</p>
+                    <h3>Output:</h3>
+                    {resParagraph}
                 </div>
             </Fragment>
             <Fragment>
