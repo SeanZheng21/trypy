@@ -6,8 +6,7 @@ import { addCode} from "../../actions/runner";
 export class Form extends Component {
     state = {
         name: '',
-        content: '',
-        owner: ''
+        content: ''
     };
 
     static propTypes = {
@@ -18,18 +17,17 @@ export class Form extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { name, content, owner } = this.state;
-    const code = { name, content, owner };
+    const { name, content } = this.state;
+    const code = { name, content };
     this.props.addCode(code);
     this.setState({
         name: '',
-        content: '',
-        owner: ''
+        content: ''
     });
   };
 
     render() {
-        const { name, content, owner } = this.state;
+        const { name, content } = this.state;
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2>Add Code</h2>
@@ -52,16 +50,6 @@ export class Form extends Component {
                       name="content"
                       onChange={this.onChange}
                       value={content}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Owner</label>
-                    <input
-                      className="form-control"
-                      type="text"
-                      name="owner"
-                      onChange={this.onChange}
-                      value={owner}
                     />
                   </div>
                   <div className="form-group">

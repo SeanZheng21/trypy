@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import {GET_RUNNER, GET_CODE, DELETE_CODE, ADD_CODE, GET_ERRORS} from "./types";
 
@@ -15,8 +16,8 @@ export const getRunner = codeTxt => dispatch => {
 };
 
 // GET_CODE
-export const getCode = () => dispatch => {
-    axios.get('/api/code')
+export const getCode = () => (dispatch, getState) => {
+    axios.get('/api/code', tokenConfig(getState))
         .then( res => {
             dispatch({
                 type: GET_CODE,
@@ -26,8 +27,8 @@ export const getCode = () => dispatch => {
 };
 
 // DELETE_CODE
-export const deleteCode = (id) => dispatch => {
-    axios.delete(`/api/code_detail/${id}`)
+export const deleteCode = (id) => (dispatch, getState) => {
+    axios.delete(`/api/code_detail/${id}`, tokenConfig(getState))
         .then( res => {
             dispatch(createMessage( {deleteCode: 'Code Deleted'}));
             dispatch({
@@ -38,8 +39,8 @@ export const deleteCode = (id) => dispatch => {
 };
 
 // ADD_CODE
-export const addCode = (code) => dispatch => {
-    axios.post('/api/code', code)
+export const addCode = (code) => (dispatch, getState) => {
+    axios.post('/api/code', code, tokenConfig(getState))
         .then( res => {
             dispatch(createMessage( {addCode: 'Code Added'}));
             dispatch({

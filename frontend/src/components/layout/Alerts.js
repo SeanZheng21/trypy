@@ -12,15 +12,14 @@ export class Alerts extends Component {
   componentDidUpdate(prevProps) {
     const { error, alert, message } = this.props;
     if (error !== prevProps.error) {
+      if (error.msg.username) alert.error(error.msg.username.join());
       if (error.msg.name) alert.error(`Name: ${error.msg.name.join()}`);
       if (error.msg.content) alert.error(`Content: ${error.msg.content.join()}`);
       if (error.msg.owner) alert.error(`Owner: ${error.msg.owner.join()}`);
-      // if (error.msg.message)
-      //   alert.error(`Message: ${error.msg.message.join()}`);
-      // if (error.msg.non_field_errors)
-      //   alert.error(error.msg.non_field_errors.join());
-      // if (error.msg.username) alert.error(error.msg.username.join());
-      // alert.error('There is an error');
+      if (error.msg.message)
+        alert.error(`Message: ${error.msg.message.join()}`);
+      if (error.msg.non_field_errors)
+        alert.error(error.msg.non_field_errors.join());
     }
 
     if (message !== prevProps.message) {
