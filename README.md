@@ -106,3 +106,66 @@ PUT:  http://127.0.0.1:8000/api/code_detail/2 \
         "created_at": "2020-04-04T08:53:04.197430Z"
 	
 }
+
+
+# User Authentication API
+
+## Register
+POST http://127.0.0.1:8000/api/auth/register \
+{	
+	"username": "tom",
+	"email": "tom@gmail.com",
+	"password": "123456"
+}
+
+### Response
+{
+    "user": {
+        "id": 4,
+        "username": "tom",
+        "email": "tom@gmail.com"
+    },
+    "token": "ab9e9898c1b1e077be341ad8e52aa63a440e7bb51052410ffc56a61f053e9ce5"
+}
+
+## Login
+POST http://127.0.0.1:8000/api/auth/login \
+{
+	"username": "taylor",
+	"password": "123456"
+}
+
+### Response
+{
+    "user": {
+        "id": 2,
+        "username": "taylor",
+        "email": "taylor@gmail.com"
+    },
+    "token": "dd1625c17eb7aea4e267505abacd160f0b0acd597d5be27ef515bf3f1ad240d7"
+}
+
+
+## Get User
+GET http://127.0.0.1:8000/api/auth/user \
+
+Authorization:   Token dd1625c17eb7aea4e267505abacd160f0b0acd597d5be27ef515bf3f1ad240d7
+
+### Response
+{
+    "id": 2,
+    "username": "taylor",
+    "email": "taylor@gmail.com"
+}
+
+If the token is invalid:\
+{
+    "detail": "Invalid token."
+}
+
+## Log Out
+POST http://127.0.0.1:8000/api/auth/logout \
+Authorization:   Token dd1625c17eb7aea4e267505abacd160f0b0acd597d5be27ef515bf3f1ad240d7
+
+### Response
+Nothing, but the token is invalidated in the server
