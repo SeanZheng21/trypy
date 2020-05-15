@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { createMessage} from "./messages";
+import { createMessage, returnErrors } from "./messages";
 
 import {GET_RUNNER, GET_CODE, DELETE_CODE, ADD_CODE, GET_ERRORS} from "./types";
 
@@ -11,7 +11,7 @@ export const getRunner = codeTxt => dispatch => {
                 type: GET_RUNNER,
                 payload: res.data
             })
-        }).catch((err => console.log(err)));
+        }).catch((err => dispatch(returnErrors(err.response.data, err.response.status))));
 };
 
 // GET_CODE
@@ -22,7 +22,7 @@ export const getCode = () => dispatch => {
                 type: GET_CODE,
                 payload: res.data
             })
-        }).catch((err => console.log(err)));
+        }).catch((err => dispatch(returnErrors(err.response.data, err.response.status))));
 };
 
 // DELETE_CODE
@@ -34,7 +34,7 @@ export const deleteCode = (id) => dispatch => {
                 type: DELETE_CODE,
                 payload: res.data
             })
-        }).catch((err => console.log(err)));
+        }).catch((err => dispatch(returnErrors(err.response.data, err.response.status))));
 };
 
 // ADD_CODE
@@ -46,15 +46,5 @@ export const addCode = (code) => dispatch => {
                 type: ADD_CODE,
                 payload: res.data
             });
-        }).catch(err => {
-            // console.log('Catching add code error');
-            const errors = {
-                msg: err.response.data,
-                status: err.response.status
-            };
-            dispatch({
-                type: GET_ERRORS,
-                payload: errors
-            });
-    });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
