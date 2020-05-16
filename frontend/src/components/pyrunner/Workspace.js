@@ -5,6 +5,7 @@ import Form from "./Form";
 export default function Workspace() {
     return (
         <Fragment>
+            <PyCode />
             <Form />
         </Fragment>
     )

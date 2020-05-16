@@ -5,12 +5,6 @@ import { getRunner, getCode, deleteCode } from "../../actions/runner";
 
 export class PyCode extends Component {
     static propTypes = {
-        // runner: PropTypes.arrayOf(
-        //     PropTypes.shape({
-        //         execution_result: PropTypes.string.isRequired,
-        //         success: PropTypes.bool.isRequired
-        //     }).isRequired
-        // ).isRequired,
         code: PropTypes.array.isRequired,
         getRunner: PropTypes.func.isRequired,
         getCode: PropTypes.func.isRequired,
