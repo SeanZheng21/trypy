@@ -51,13 +51,13 @@ export class Header extends Component {
                     <span className="navbar-toggler-icon"/>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a className="navbar-brand" href="#">Trypy</a>
+                    <Link to="/" className="nav-link">Trypy</Link>
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            <Link to="/playground" className="nav-link">Playground</Link>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                        <li className="nav-item active">
+                            <Link to="/workspace" className="nav-link">Workspace</Link>
                         </li>
                     </ul>
                     { isAuthenticated ? authLinks : guestLinks }

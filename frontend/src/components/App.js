@@ -11,8 +11,10 @@ import { loadUser } from "../actions/auth";
 import Header from "./layout/Header";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
+import {Home} from "./pyrunner/Home"
 import PrivateRoute from "./common/PrivateRoute";
-import Dashboard from "./pyrunner/Dashboard";
+import Playground from "./pyrunner/Playground";
+import Workspace from "./pyrunner/Workspace";
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from "react-alert-template-basic";
 import Alerts from "./layout/Alerts";
@@ -42,7 +44,9 @@ class App extends Component{
                             <Alerts />
                             <div className="container">
                                 <Switch>
-                                    <PrivateRoute exact path="/" component={Dashboard} />
+                                    <PrivateRoute exact path="/playground" component={Playground} />
+                                    <PrivateRoute exact path="/workspace" component={Workspace} />
+                                    <Route exact path="/" component={Home} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />
                                 </Switch>
