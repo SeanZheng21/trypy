@@ -39,7 +39,7 @@ export class Executor extends Component {
         }
         return (
             <div>
-                <h1>Write your Python code here!</h1>
+                <h1>Python Playground</h1>
                 <div className="row"  style={{marginRight: "10px"}}>
                     <div className="column left" >
                         <Fragment>
@@ -49,16 +49,15 @@ export class Executor extends Component {
                         </Fragment>
                     </div>
                     <div className="column right">
-                        <button className="btn btn-success btn-sm"
-                                onClick={
-                                    this.runButtonClick
-                                }>
-                            Run Code
-                        </button>
-                        <br/>
                         <div>
-                            <h3>Output:</h3>
-                            <pre>
+                            <span>
+                                <h3>Output:
+                                    <button className="btn btn-success btn-sm float-right" onClick={this.runButtonClick}>
+                                        Run Code
+                                    </button>
+                                </h3>
+                            </span>
+                            <pre className="code-output">
                                 <code>
                                     {resParagraph}
                                 </code>

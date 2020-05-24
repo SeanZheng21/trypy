@@ -10,6 +10,11 @@ textarea {
   padding: 10px;
 }
 
+.code-output {
+    border: 3px dashed darkgray;
+    background-color: lightgray;
+}
+
 .left {
   width: 60%;
 }
