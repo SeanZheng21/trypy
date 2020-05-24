@@ -14,7 +14,7 @@ export class PyCode extends Component {
     componentDidMount() {
         this.props.getRunner();
         this.props.getCode();
-    }
+    };
 
     state = {
         code: `print('Hello world!')`,

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PyCode from "./PyCode";
 import Form from "./Form";
+import ProjFiles from "./ProjFiles";
 import '../stylesheet/Bar.css'
 
 export default function Workspace() {
@@ -8,11 +9,11 @@ export default function Workspace() {
         <Fragment>
             <div className="row"  style={{marginRight: "10px"}}>
                 <div className="column-bar left-bar" >
-                    <p>The files go here!</p>
+                    <ProjFiles />
                 </div>
                 <div className="column-bar right-bar" >
-                    <PyCode />
-                    <Form />
+                    {/*<PyCode />*/}
+                    {/*<Form />*/}
                 </div>
             </div>
 
