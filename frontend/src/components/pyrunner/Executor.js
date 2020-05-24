@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRunner, getCode, deleteCode } from "../../actions/runner";
-// import '../stylesheet/Executor.css';
+import '../stylesheet/Executor.css';
 
 export class Executor extends Component {
     static propTypes = {

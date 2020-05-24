@@ -1,0 +1,18 @@
+.column-bar {
+  float: left;
+  padding: 10px;
+}
+
+.left-bar {
+  width: 25%;
+}
+
+.right-bar {
+  width: 75%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
