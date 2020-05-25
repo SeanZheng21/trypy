@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {addCode, deleteCode, getCode, getRunner} from "../../actions/runner";
-import ProjFiles from "./ProjFiles";
+import '../stylesheet/Pycode.css'
 
 export class PyCode extends Component {
     constructor(props) {
@@ -163,17 +163,18 @@ export class PyCode extends Component {
                             {
                                 this.state.openFiles.map(f => (
                                     <span key={f.id}>
-                                        <button className="tablinks" onClick={this.tabSelectClick.bind(this, f.id)}>
+                                        <button className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm': 'btn inactive-tab btn-sm'}
+                                                onClick={this.tabSelectClick.bind(this, f.id)}>
                                             {f.name}.py&nbsp;
                                         </button>
-                                        <button onClick={this.tabCloseClick.bind(this, f.id)}>&#10006;</button>
+                                        <button onClick={this.tabCloseClick.bind(this, f.id)}
+                                                className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm': 'btn inactive-tab btn-sm'}>&#10006;</button>
                                     </span>
                                 ))
                             }
                         </div>
                         <div className="row"  style={{marginRight: "10px"}}>
                             <div className="column left" >
-                                <h2>Active File: {this.state.activeFile?.name}</h2>
                                 <Fragment>
                                     <div>
                                         <textarea rows="20" cols="70" value={this.state.code} onChange={this.handleChange}/>

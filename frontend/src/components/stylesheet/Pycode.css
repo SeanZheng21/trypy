@@ -1,0 +1,25 @@
+.inactive-tab {
+    background-color: lightgray;
+}
+
+.active-tab {
+    background-color: dodgerblue;
+}
+
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.btn {
+  transition-duration: 0.2s;
+}
+
+.btn:hover {
+  background-color: blue; /* Green */
+  color: white;
+}
