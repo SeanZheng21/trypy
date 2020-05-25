@@ -51,7 +51,7 @@ export class ProjFiles extends Component {
                                             this.props.deleteCode.bind(this, c.id)
                                             }>&#10006;</button>
                                         <button className="btn btn-info btn-sm float-right" onClick={
-                                            () => console.log(`Editing file ${c.id}: ${c.name}`)
+                                            this.props.handleEdit(c.id, c.name, c.content)
                                             }>&#9998;</button>
                                     </td>
                                 </tr>
