@@ -5,6 +5,19 @@ import {addCode, deleteCode, getCode, getRunner} from "../../actions/runner";
 import ProjFiles from "./ProjFiles";
 
 export class PyCode extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            openFiles: [],
+            activeFile: {},
+            newName: '',
+            code: `print('Hello world!')`,
+            success: false
+        };
+
+        this.editFileClick = this.editFileClick.bind(this);
+    }
+
     static propTypes = {
         code: PropTypes.array.isRequired,
         getRunner: PropTypes.func.isRequired,
@@ -33,14 +46,9 @@ export class PyCode extends Component {
         this.props.getRunner();
     };
 
-    state = {
-        newName: '',
-        code: `print('Hello world!')`,
-        success: false
-    };
-
     handleChange = event => {
         this.setState({
+            ...this.state,
             code: event.target.value,
             success: this.state.success
         });
@@ -50,12 +58,51 @@ export class PyCode extends Component {
         this.props.getRunner(this.state.code);
     };
 
-    tabSelectClick = () => {
-
+    editFileClick = (id, name, content) => {
+        const tgtFile = this.state.openFiles.find(elt => elt.id === id);
+        if (tgtFile !== undefined) {
+            // Clicked on an already opened file
+            this.setState({
+                ...this.state,
+                activeFile: tgtFile
+            });
+            return;
+        }
+        let files = this.state.openFiles;
+        const newFile = { id, name, content };
+        files.push(newFile);
+        this.setState({
+            ...this.state,
+            openFiles: files,
+            activeFile: newFile
+        });
     }
 
-    tabCloseClick = () => {
+    tabSelectClick = (id) => {
+        console.log('In select tab');
+        const activeFile = this.state.openFiles.find(elt => elt.id === id);
+        this.setState({
+            ...this.state,
+            activeFile: activeFile
+        })
+    }
 
+    tabCloseClick = (id) => {
+        console.log('In close click');
+        let files = this.state.openFiles.filter( o => o.id !== id);
+        let activeFile;
+        if (id === this.state.activeFile.id) {
+            // Trying to close the active file
+            activeFile = this.state.openFiles.find(elt => elt.id !== id)
+        } else {
+            // Trying to close an inactive file
+            activeFile = this.state.activeFile;
+        }
+        this.setState({
+            ...this.state,
+            openFiles:files,
+            activeFile: activeFile
+        });
     }
 
     render() {
@@ -81,7 +128,8 @@ export class PyCode extends Component {
                                         <button className="btn btn-danger btn-sm float-right" onClick={
                                             this.props.deleteCode.bind(this, c.id)
                                             }>&#10006;</button>
-                                        <button className="btn btn-info btn-sm float-right" >&#9998;</button>
+                                        <button className="btn btn-info btn-sm float-right"
+                                            onClick={this.editFileClick.bind(this, c.id, c.name, c.content)}>&#9998;</button>
                                     </td>
                                 </tr>
                             ))
@@ -112,12 +160,20 @@ export class PyCode extends Component {
                 <div className="column-bar right-bar" >
                     <div>
                         <div className="tab">
-                            <button className="tablinks" onClick={this.tabSelectClick}>
-                                London&nbsp;<span onClick={this.tabCloseClick}>&#10006;</span>
-                            </button>
+                            {
+                                this.state.openFiles.map(f => (
+                                    <span key={f.id}>
+                                        <button className="tablinks" onClick={this.tabSelectClick.bind(this, f.id)}>
+                                            {f.name}.py&nbsp;
+                                        </button>
+                                        <button onClick={this.tabCloseClick.bind(this, f.id)}>&#10006;</button>
+                                    </span>
+                                ))
+                            }
                         </div>
                         <div className="row"  style={{marginRight: "10px"}}>
                             <div className="column left" >
+                                <h2>Active File: {this.state.activeFile?.name}</h2>
                                 <Fragment>
                                     <div>
                                         <textarea rows="20" cols="70" value={this.state.code} onChange={this.handleChange}/>
@@ -144,7 +200,6 @@ export class PyCode extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 }
