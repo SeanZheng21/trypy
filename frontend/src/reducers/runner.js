@@ -1,6 +1,6 @@
 import { GET_RUNNER } from "../actions/types.js";
 import { GET_CODE, DELETE_CODE } from "../actions/types.js";
-import {ADD_CODE} from "../actions/types";
+import {ADD_CODE, PUT_CODE} from "../actions/types";
 
 const initialState = {
     runner: [],
@@ -28,6 +28,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 code: [...state.code, action.payload]
+            };
+        case PUT_CODE:
+            return {
+                ...state,
+                code: [...state.code.filter(c => c.id !== action.payload.id), action.payload]
             };
         default:
             return state;

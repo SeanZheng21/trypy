@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {addCode, deleteCode, getCode, getRunner} from "../../actions/runner";
+import {addCode, deleteCode, getCode, getRunner, putCode} from "../../actions/runner";
 import '../stylesheet/Pycode.css'
 
 export class PyCode extends Component {
@@ -11,11 +11,12 @@ export class PyCode extends Component {
             openFiles: [],
             activeFile: {},
             newName: '',
-            code: `print('Hello world!')`,
+            code: ``,
             success: false
         };
 
         this.editFileClick = this.editFileClick.bind(this);
+        this.saveButtonClick = this.saveButtonClick.bind(this);
     }
 
     static propTypes = {
@@ -23,7 +24,8 @@ export class PyCode extends Component {
         getRunner: PropTypes.func.isRequired,
         getCode: PropTypes.func.isRequired,
         deleteCode: PropTypes.func.isRequired,
-        addCode: PropTypes.func.isRequired
+        addCode: PropTypes.func.isRequired,
+        putCode: PropTypes.func.isRequired
     };
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -58,12 +60,24 @@ export class PyCode extends Component {
         this.props.getRunner(this.state.code);
     };
 
+    saveButtonClick = () => {
+        let updatedCode = this.props.code.find(elt => elt.id === this.state.activeFile.id);
+        updatedCode.content = this.state.code;
+        console.log(updatedCode);
+        this.props.putCode(this.state.activeFile.id, updatedCode);
+        this.state.openFiles = [
+            ...this.state.openFiles.filter(elt => elt.id !== this.state.activeFile.id),
+            updatedCode
+        ]
+    };
+
     editFileClick = (id, name, content) => {
         const tgtFile = this.state.openFiles.find(elt => elt.id === id);
         if (tgtFile !== undefined) {
             // Clicked on an already opened file
             this.setState({
                 ...this.state,
+                code: tgtFile.content,
                 activeFile: tgtFile
             });
             return;
@@ -73,25 +87,34 @@ export class PyCode extends Component {
         files.push(newFile);
         this.setState({
             ...this.state,
+            code: content,
             openFiles: files,
             activeFile: newFile
         });
     }
 
     tabSelectClick = (id) => {
-        console.log('In select tab');
         const activeFile = this.state.openFiles.find(elt => elt.id === id);
         this.setState({
             ...this.state,
+            code: activeFile.content,
             activeFile: activeFile
         })
     }
 
     tabCloseClick = (id) => {
-        console.log('In close click');
         let files = this.state.openFiles.filter( o => o.id !== id);
         let activeFile;
         if (id === this.state.activeFile.id) {
+            if (this.state.openFiles.length === 1) {
+                // Trying to close the last tab
+                this.setState({
+                    ...this.state,
+                    openFiles:[],
+                    code: '',
+                    activeFile: undefined
+                });
+            }
             // Trying to close the active file
             activeFile = this.state.openFiles.find(elt => elt.id !== id)
         } else {
@@ -101,6 +124,7 @@ export class PyCode extends Component {
         this.setState({
             ...this.state,
             openFiles:files,
+            code: activeFile.content,
             activeFile: activeFile
         });
     }
@@ -163,12 +187,13 @@ export class PyCode extends Component {
                             {
                                 this.state.openFiles.map(f => (
                                     <span key={f.id}>
-                                        <button className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm': 'btn inactive-tab btn-sm'}
-                                                onClick={this.tabSelectClick.bind(this, f.id)}>
+                                        <button className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm':
+                                            'btn inactive-tab btn-sm'} onClick={this.tabSelectClick.bind(this, f.id)}>
                                             {f.name}.py&nbsp;
                                         </button>
                                         <button onClick={this.tabCloseClick.bind(this, f.id)}
-                                                className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm': 'btn inactive-tab btn-sm'}>&#10006;</button>
+                                                className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm':
+                                                    'btn inactive-tab btn-sm'}>&#10006;</button>
                                     </span>
                                 ))
                             }
@@ -185,9 +210,10 @@ export class PyCode extends Component {
                                 <div>
                                     <span>
                                         <h3>Output:
-                                            <button className="btn btn-success btn-sm float-right" onClick={this.runButtonClick}>
-                                                Run Code
-                                            </button>
+                                            <button className="btn btn-success btn-sm float-right"
+                                                    onClick={this.runButtonClick.bind(this)}>&#9654;</button>
+                                            <button className="btn btn-info btn-sm float-right"
+                                                    onClick={this.saveButtonClick.bind(this)}>&#128190;</button>
                                         </h3>
                                     </span>
                                     <pre className="code-output">
@@ -211,4 +237,4 @@ const mapStateToProps = state => ({
     newName: state.newName
 });
 
-export default connect(mapStateToProps, { getRunner, getCode, deleteCode, addCode })(PyCode);
+export default connect(mapStateToProps, { getRunner, getCode, deleteCode, addCode, putCode })(PyCode);

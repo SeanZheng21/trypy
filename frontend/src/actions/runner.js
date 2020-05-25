@@ -2,7 +2,7 @@ import axios from 'axios'
 import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
 
-import {GET_RUNNER, GET_CODE, DELETE_CODE, ADD_CODE, GET_ERRORS} from "./types";
+import {GET_RUNNER, GET_CODE, DELETE_CODE, ADD_CODE, PUT_CODE, GET_ERRORS} from "./types";
 
 // GET_RUNNER
 export const getRunner = codeTxt => dispatch => {
@@ -45,6 +45,18 @@ export const addCode = (code) => (dispatch, getState) => {
             dispatch(createMessage( {addCode: 'Code Added'}));
             dispatch({
                 type: ADD_CODE,
+                payload: res.data
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+// PUT_CODE
+export const putCode = (id, code) => (dispatch, getState) => {
+    axios.put(`/api/code_detail/${id}`, code, tokenConfig(getState))
+        .then( res => {
+            dispatch(createMessage( {addCode: 'Code Updated'}));
+            dispatch({
+                type: PUT_CODE,
                 payload: res.data
             });
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));

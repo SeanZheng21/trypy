@@ -106,6 +106,15 @@ PUT:  http://127.0.0.1:8000/api/code_detail/2 \
         "created_at": "2020-04-04T08:53:04.197430Z"
 	
 }
+Response:\
+{
+        "id": 2,
+        "name": "goodbyeeeeeee",
+        "content": "x=2\nprint(x)\nprint('Foooooooo!')",
+        "owner": 1,
+        "created_at": "2020-04-04T08:53:04.197430Z"
+	
+}
 
 
 # User Authentication API
