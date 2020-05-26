@@ -9,6 +9,7 @@ export class PyCode extends Component {
         super(props);
         this.state = {
             openFiles: [],
+            editedContent: [],
             activeFile: {},
             newName: '',
             code: ``,
@@ -71,13 +72,38 @@ export class PyCode extends Component {
         ]
     };
 
+    saveEditedContent  = (fromId) => {
+        let contentToSave = this.state.editedContent.find(elt => elt.id === fromId);
+        contentToSave.content = this.state.code;
+        this.setState({
+            ...this.state,
+            editedContent: this.state.editedContent.filter(elt => elt.id !== fromId).push(contentToSave)
+        });
+    };
+
+    addEditedContent = (id, name, content) => {
+        const contentToAdd = {id, name, content};
+        const eltFound = this.state.editedContent.find(elt => elt.id === id);
+        if (eltFound === undefined) {
+            // The content doesn't exist, save the content to the state
+            this.setState({
+                ...this.state,
+                editedContent: this.state.editedContent.push(contentToAdd)
+            });
+        } else {
+            // If it's already in the editedContent, do nothing
+        }
+    };
+
     editFileClick = (id, name, content) => {
         const tgtFile = this.state.openFiles.find(elt => elt.id === id);
         if (tgtFile !== undefined) {
             // Clicked on an already opened file
+            const contentToAdd =
+                this.state.editedContent.find(elt => elt.id === id).content;
             this.setState({
                 ...this.state,
-                code: tgtFile.content,
+                code: contentToAdd,
                 activeFile: tgtFile
             });
             return;
@@ -85,6 +111,7 @@ export class PyCode extends Component {
         let files = this.state.openFiles;
         const newFile = { id, name, content };
         files.push(newFile);
+        this.addEditedContent(id, name, content);
         this.setState({
             ...this.state,
             code: content,
@@ -94,16 +121,23 @@ export class PyCode extends Component {
     }
 
     tabSelectClick = (id) => {
+        if (id === this.state.activeFile.id) {
+            // Clicked on the active file, do nothing
+            return;
+        }
         const activeFile = this.state.openFiles.find(elt => elt.id === id);
+        this.saveEditedContent(this.state.activeFile.id);
+        const contentToLoad = this.state.editedContent.find(elt => elt.id === id).content;
         this.setState({
             ...this.state,
-            code: activeFile.content,
+            code: contentToLoad,
             activeFile: activeFile
         })
     }
 
     tabCloseClick = (id) => {
         let files = this.state.openFiles.filter( o => o.id !== id);
+        let contents = this.state.editedContent.filter(elt => elt.id !== id);
         let activeFile;
         if (id === this.state.activeFile.id) {
             if (this.state.openFiles.length === 1) {
@@ -111,9 +145,11 @@ export class PyCode extends Component {
                 this.setState({
                     ...this.state,
                     openFiles:[],
+                    editedContent: [],
                     code: '',
                     activeFile: undefined
                 });
+                return;
             }
             // Trying to close the active file
             activeFile = this.state.openFiles.find(elt => elt.id !== id)
@@ -121,10 +157,12 @@ export class PyCode extends Component {
             // Trying to close an inactive file
             activeFile = this.state.activeFile;
         }
+        const contentToLoad = this.state.editedContent.find(elt => elt.id === activeFile.id).content;
         this.setState({
             ...this.state,
             openFiles:files,
-            code: activeFile.content,
+            editedContent: contents,
+            code: contentToLoad,
             activeFile: activeFile
         });
     }
