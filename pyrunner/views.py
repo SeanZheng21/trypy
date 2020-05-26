@@ -7,7 +7,11 @@ from rest_framework import status
 # Create your views here.
 from pyrunner.models import Code
 from pyrunner.serializers import PyrunnerSerializer
+from runner.multi_runner import MultiRunner
 from runner.runner import Runner
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -64,3 +68,40 @@ def code_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def exec_project(request, format='application/json'):
+    main_module = ''
+    imported_modules = []
+    if 'main_module' in request.data:
+        main_module = request.data['main_module']
+        # logger.error('Main module is: ' + main_module)
+    if 'imported_modules' in request.data:
+        im = request.data['imported_modules']
+        for item in im:
+            name = item['name']
+            content = item['content']
+            imported_modules.append((name, content))
+            # logger.error('Imported module is: ' + name + ' : ' + content)
+
+    multi_runner = MultiRunner(main_module, imported_modules)
+    multi_runner.execute()
+    try:
+        execution_res = multi_runner.get_result()
+        execution_err = multi_runner.get_error_msg()
+        success = multi_runner.is_success()
+        return Response({
+            'received_program': request.data,
+            'execution_result': execution_res,
+            'execution_error': execution_err,
+            'success': success
+        })
+    except:
+        return Response({
+            'received_program': request.data,
+            'execution_result': 'error',
+            'execution_error': 'error',
+            'success': False
+        })

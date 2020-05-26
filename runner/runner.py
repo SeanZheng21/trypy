@@ -2,6 +2,7 @@ import os
 # BASE_DIR = "/Users/Carlistle/Developer/PyCharmWorkspace/trypy/"
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 class Runner:
     def __init__(self, code=""):
         self.__code = code
@@ -33,13 +34,15 @@ class Runner:
         f_res.close()
         # Read the error
         f_err = open(os.path.join(BASE_DIR, "tempfile/error.txt"), "r")
-        self.__error_msg = f_err.read().strip()
+        self.__error_msg = f_err.read().strip()\
+            .replace(os.path.join(BASE_DIR, "tempfile/"), '').replace('code.txt', 'main')
         f_err.close()
 
         # Clean up
         os.system("rm " + os.path.join(BASE_DIR, "tempfile/res.txt"))
         os.system("rm " + os.path.join(BASE_DIR, "tempfile/code.txt"))
         os.system("rm " + os.path.join(BASE_DIR, "tempfile/error.txt"))
+        os.system("rm -r " + os.path.join(BASE_DIR, "tempfile/__pycache__"))
 
         # Update the error
         if self.__error_msg:

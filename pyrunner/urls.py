@@ -12,4 +12,5 @@ urlpatterns = [
     path('process', views.process_code, name='process'),
     path('code_detail/<int:pk>', views.code_detail),
     path('code', include('pyrunner.codeurls')),
+    path('exec_project', views.exec_project),
 ]

@@ -116,6 +116,42 @@ Response:\
 	
 }
 
+# Run multiple files with a main
+GET http://127.0.0.1:8000/api/exec_project \
+with a valid token\
+{
+    "main_module": "import c\n\nc.my_print('Taylor')",
+    "imported_modules": [
+    	{"name": "b", "content": "def my_print(name):\n\tprint('Hello, ' + name + ' !')"},
+    	{"name": "c", "content": "def my_print(name):\n\tprint('Hi, ' + name + ' !')"},
+    	{"name": "ddd", "content": "789"}
+    ]
+}
+
+### Response
+{
+    "received_program": {
+        "main_module": "import c\n\nc.my_print('Taylor')",
+        "imported_modules": [
+            {
+                "name": "b",
+                "content": "def my_print(name):\n\tprint('Hello, ' + name + ' !')"
+            },
+            {
+                "name": "c",
+                "content": "def my_print(name):\n\tprint('Hi, ' + name + ' !')"
+            },
+            {
+                "name": "ddd",
+                "content": "789"
+            }
+        ]
+    },
+    "execution_result": "Hi, Taylor !",
+    "execution_error": "",
+    "success": true
+}
+
 
 # User Authentication API
 
