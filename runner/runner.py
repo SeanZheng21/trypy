@@ -1,6 +1,6 @@
 import os
-BASE = "/Users/Carlistle/Developer/PyCharmWorkspace/trypy/"
-
+# BASE_DIR = "/Users/Carlistle/Developer/PyCharmWorkspace/trypy/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class Runner:
     def __init__(self, code=""):
@@ -11,35 +11,35 @@ class Runner:
 
     def execute(self):
         # The code.txt contains the program
-        code_file = open(BASE + "tempfile/code.txt", "w+")
+        code_file = open(os.path.join(BASE_DIR, "tempfile/code.txt"), "w+")
         code_file.write(self.__code)
         code_file.close()
         # The res.txt contains the result
         # Initially empty, empty when error occurs
-        code_file = open(BASE + "tempfile/res.txt", "w+")
+        code_file = open(os.path.join(BASE_DIR, "tempfile/res.txt"), "w+")
         code_file.close()
         # The error.txt contains the error message
         # Empty when the code executes without any error
-        code_file = open(BASE + "tempfile/error.txt", "w+")
+        code_file = open(os.path.join(BASE_DIR, "tempfile/error.txt"), "w+")
         code_file.close()
 
         # Execute the code.txt in python with script pyexecuter.sh
-        shell_path = BASE + "tempfile/pyexecuter.sh"
+        shell_path = os.path.join(BASE_DIR, "tempfile/pyexecuter.sh")
         os.system(shell_path)
 
         # Read the result
-        f_res = open("" + BASE + "tempfile/res.txt", "r")
+        f_res = open(os.path.join(BASE_DIR, "tempfile/res.txt"), "r")
         self.__result = f_res.read().strip()
         f_res.close()
         # Read the error
-        f_err = open("" + BASE + "tempfile/error.txt", "r")
+        f_err = open(os.path.join(BASE_DIR, "tempfile/error.txt"), "r")
         self.__error_msg = f_err.read().strip()
         f_err.close()
 
         # Clean up
-        os.system("rm " + BASE + "tempfile/res.txt")
-        os.system("rm " + BASE + "tempfile/code.txt")
-        os.system("rm " + BASE + "tempfile/error.txt")
+        os.system("rm " + os.path.join(BASE_DIR, "tempfile/res.txt"))
+        os.system("rm " + os.path.join(BASE_DIR, "tempfile/code.txt"))
+        os.system("rm " + os.path.join(BASE_DIR, "tempfile/error.txt"))
 
         # Update the error
         if self.__error_msg:
