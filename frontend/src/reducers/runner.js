@@ -1,6 +1,6 @@
 import { GET_RUNNER } from "../actions/types.js";
 import { GET_CODE, DELETE_CODE } from "../actions/types.js";
-import {ADD_CODE, PUT_CODE} from "../actions/types";
+import {ADD_CODE, PROJ_RUNNER, PUT_CODE} from "../actions/types";
 
 const initialState = {
     runner: [],
@@ -10,6 +10,11 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_RUNNER:
+            return {
+                ...state,
+                runner: action.payload
+            };
+        case PROJ_RUNNER:
             return {
                 ...state,
                 runner: action.payload

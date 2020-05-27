@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {addCode, deleteCode, getCode, getRunner, putCode} from "../../actions/runner";
+import {addCode, deleteCode, getCode, getRunner, putCode, projRunner} from "../../actions/runner";
 import '../stylesheet/Pycode.css'
 
 export class PyCode extends Component {
@@ -23,6 +23,7 @@ export class PyCode extends Component {
     static propTypes = {
         code: PropTypes.array.isRequired,
         getRunner: PropTypes.func.isRequired,
+        projRunner: PropTypes.func.isRequired,
         getCode: PropTypes.func.isRequired,
         deleteCode: PropTypes.func.isRequired,
         addCode: PropTypes.func.isRequired,
@@ -59,6 +60,18 @@ export class PyCode extends Component {
 
     runButtonClick = () => {
         this.props.getRunner(this.state.code);
+    };
+
+    runProjButtonClick = () => {
+        let imported_modules = [];
+        this.state.openFiles.map(elt => (
+            imported_modules.push({
+                name: elt.name,
+                content: elt.content
+            })
+        ));
+        console.log(imported_modules)
+        this.props.projRunner(this.state.code, imported_modules);
     };
 
     saveButtonClick = () => {
@@ -250,6 +263,8 @@ export class PyCode extends Component {
                                         <h3>Output:
                                             <button className="btn btn-success btn-sm float-right"
                                                     onClick={this.runButtonClick.bind(this)}>&#9654;</button>
+                                            <button className="btn btn-success btn-sm float-right"
+                                                    onClick={this.runProjButtonClick.bind(this)}>&#9654;all</button>
                                             <button className="btn btn-info btn-sm float-right"
                                                     onClick={this.saveButtonClick.bind(this)}>&#128190;</button>
                                         </h3>
@@ -275,4 +290,4 @@ const mapStateToProps = state => ({
     newName: state.newName
 });
 
-export default connect(mapStateToProps, { getRunner, getCode, deleteCode, addCode, putCode })(PyCode);
+export default connect(mapStateToProps, { getRunner, projRunner, getCode, deleteCode, addCode, putCode })(PyCode);

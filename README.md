@@ -117,7 +117,7 @@ Response:\
 }
 
 # Run multiple files with a main
-GET http://127.0.0.1:8000/api/exec_project \
+POST http://127.0.0.1:8000/api/exec_project \
 with a valid token\
 {
     "main_module": "import c\n\nc.my_print('Taylor')",

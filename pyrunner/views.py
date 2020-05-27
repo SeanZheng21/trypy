@@ -70,7 +70,7 @@ def code_detail(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 @parser_classes([JSONParser])
 def exec_project(request, format='application/json'):
     main_module = ''
