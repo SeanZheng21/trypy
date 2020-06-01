@@ -15,6 +15,9 @@ export class Home extends React.Component {
             <li>
                 <Link to="/workspace" className="nav-link">Go to Workspace</Link>
             </li>
+            <li>
+                <Link to="/tutorial-home" className="nav-link">Go to Tutorials</Link>
+            </li>
         </ul>
         </div>
     );
