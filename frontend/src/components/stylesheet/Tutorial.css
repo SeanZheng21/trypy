@@ -15,6 +15,24 @@ pre {
     word-wrap: break-word;
 }
 
+div.fixed {
+  position: fixed;
+  right: 0;
+}
+
 .ex-answer:hover {
     color: red;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 75%;
+}
+
+.right {
+  width: 25%;
 }
