@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import "../stylesheet/Tutorial.css";
 import { HashLink as HLink } from 'react-router-hash-link';
+import TutorialSideBar from "./TutorialSideBar";
 
 export class TutorialSyntax extends Component {
 
@@ -755,13 +756,7 @@ print('I got ' + str(point_total) + ' points!')`
                     </div>
                 </div>
 
-                <div className="column right fixed">
-                    <h2>Tutorials</h2>
-                    <ul>
-                        <li><HLink to="/tutorial-home">Python Overview</HLink></li>
-                        <li><HLink to="/tutorial-syntax">Python Syntax</HLink></li>
-                    </ul>
-                </div>
+                <TutorialSideBar/>
             </div>
         );
     }

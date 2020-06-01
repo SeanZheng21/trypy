@@ -23,6 +23,7 @@ import { Provider } from 'react-redux'
 import store from '../store'
 import TutorialIntro from "./tutorials/TutorialIntro";
 import TutorialSyntax from "./tutorials/TutorialSyntax";
+import TutorialString from "./tutorials/TutorialString";
 
 // Alert Options
 const alertOptions = {
@@ -51,6 +52,7 @@ class App extends Component{
                                     <Route exact path="/" component={Home} />
                                     <Route exact path="/tutorial-home" component={TutorialIntro} />
                                     <Route exact path="/tutorial-syntax" component={TutorialSyntax} />
+                                    <Route exact path="/tutorial-string" component={TutorialString} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />
                                 </Switch>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import "../stylesheet/Tutorial.css";
 import {HashLink as HLink} from "react-router-hash-link";
+import TutorialSideBar from "./TutorialSideBar";
 
 export class TutorialIntro extends Component {
     render() {
@@ -33,17 +34,15 @@ export class TutorialIntro extends Component {
                                 <h3><Link to="/tutorial-syntax" className="nav-link">Python Syntax</Link></h3>
                                 <p>In this course, learn about the syntax of the Python programming language!</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-string" className="nav-link">Python String</Link></h3>
+                                <p>This course will introduce you to strings and console output in Python.</p>
+                            </li>
                         </ol>
                     </div>
                 </div>
 
-                <div className="column right fixed">
-                    <h2>Tutorials</h2>
-                    <ul>
-                        <li><HLink to="/tutorial-home">Python Overview</HLink></li>
-                        <li><HLink to="/tutorial-syntax">Python Syntax</HLink></li>
-                    </ul>
-                </div>
+                <TutorialSideBar />
             </div>
         );
     }
