@@ -38,6 +38,11 @@ export class TutorialIntro extends Component {
                                 <h3><Link to="/tutorial-string" className="nav-link">Python String</Link></h3>
                                 <p>This course will introduce you to strings and console output in Python.</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-control" className="nav-link">Python Control Flow</Link></h3>
+                                <p>Learn how to use conditionals and control flow to create programs that generate
+                                    different outcomes.</p>
+                            </li>
                         </ol>
                     </div>
                 </div>

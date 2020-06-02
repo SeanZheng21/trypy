@@ -24,6 +24,7 @@ import store from '../store'
 import TutorialIntro from "./tutorials/TutorialIntro";
 import TutorialSyntax from "./tutorials/TutorialSyntax";
 import TutorialString from "./tutorials/TutorialString";
+import TutorialControl from "./tutorials/TutorialControl";
 
 // Alert Options
 const alertOptions = {
@@ -53,6 +54,7 @@ class App extends Component{
                                     <Route exact path="/tutorial-home" component={TutorialIntro} />
                                     <Route exact path="/tutorial-syntax" component={TutorialSyntax} />
                                     <Route exact path="/tutorial-string" component={TutorialString} />
+                                    <Route exact path="/tutorial-control" component={TutorialControl} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />
                                 </Switch>
