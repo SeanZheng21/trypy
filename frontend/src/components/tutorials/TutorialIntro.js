@@ -43,6 +43,10 @@ export class TutorialIntro extends Component {
                                 <p>Learn how to use conditionals and control flow to create programs that generate
                                     different outcomes.</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-function" className="nav-link">Python Function</Link></h3>
+                                <p>Learn how to create and use functions in Python!</p>
+                            </li>
                         </ol>
                     </div>
                 </div>

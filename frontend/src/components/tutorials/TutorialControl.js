@@ -6,7 +6,8 @@ export class TutorialControl extends Component {
     constructor(props) {
         super(props);
         this.exClick = this.exClick.bind(this);
-        let answers = [`bool_one = True
+        let answers = [
+            `bool_one = True
 bool_two = True
 bool_three = True
 bool_four = False
