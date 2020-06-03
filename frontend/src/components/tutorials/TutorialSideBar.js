@@ -13,6 +13,7 @@ export class TutorialSideBar extends Component {
                     <li><HLink to="/tutorial-string">Python String</HLink></li>
                     <li><HLink to="/tutorial-control">Python Control Flow</HLink></li>
                     <li><HLink to="/tutorial-function">Python Function</HLink></li>
+                    <li><HLink to="/tutorial-list">Python List</HLink></li>
                 </ul>
             </div>
         );

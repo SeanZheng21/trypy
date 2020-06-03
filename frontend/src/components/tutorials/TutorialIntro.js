@@ -47,6 +47,10 @@ export class TutorialIntro extends Component {
                                 <h3><Link to="/tutorial-function" className="nav-link">Python Function</Link></h3>
                                 <p>Learn how to create and use functions in Python!</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-list" className="nav-link">Python List and Dictionary</Link></h3>
+                                <p>In this course, you will learn about the data structures lists and dictionaries.</p>
+                            </li>
                         </ol>
                     </div>
                 </div>
