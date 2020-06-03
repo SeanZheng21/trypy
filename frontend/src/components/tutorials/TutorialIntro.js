@@ -51,6 +51,10 @@ export class TutorialIntro extends Component {
                                 <h3><Link to="/tutorial-list" className="nav-link">Python List and Dictionary</Link></h3>
                                 <p>In this course, you will learn about the data structures lists and dictionaries.</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-loop" className="nav-link">Python Loops</Link></h3>
+                                <p>Learn about ‘while’ and ‘for’ loops in Python.</p>
+                            </li>
                         </ol>
                     </div>
                 </div>

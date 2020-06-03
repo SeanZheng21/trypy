@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import TutorialSideBar from "./TutorialSideBar";
 
 export class TutorialList extends Component {
-        constructor(props) {
+    constructor(props) {
         super(props);
         this.exClick = this.exClick.bind(this);
         let answers = [`numbers = [5, 6, 7, 8]

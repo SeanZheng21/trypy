@@ -27,6 +27,7 @@ import TutorialString from "./tutorials/TutorialString";
 import TutorialControl from "./tutorials/TutorialControl";
 import TutorialFunction from "./tutorials/TutorialFunction";
 import TutorialList from "./tutorials/TutorialList";
+import TutorialLoop from "./tutorials/TutorialLoop";
 
 // Alert Options
 const alertOptions = {
@@ -58,6 +59,7 @@ class App extends Component{
                                     <Route exact path="/tutorial-string" component={TutorialString} />
                                     <Route exact path="/tutorial-control" component={TutorialControl} />
                                     <Route exact path="/tutorial-function" component={TutorialFunction} />
+                                    <Route exact path="/tutorial-loop" component={TutorialLoop} />
                                     <Route exact path="/tutorial-list" component={TutorialList} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />

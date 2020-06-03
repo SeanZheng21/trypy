@@ -14,6 +14,7 @@ export class TutorialSideBar extends Component {
                     <li><HLink to="/tutorial-control">Python Control Flow</HLink></li>
                     <li><HLink to="/tutorial-function">Python Function</HLink></li>
                     <li><HLink to="/tutorial-list">Python List</HLink></li>
+                    <li><HLink to="/tutorial-loop">Python Loops</HLink></li>
                 </ul>
             </div>
         );
