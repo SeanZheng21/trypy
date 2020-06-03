@@ -55,6 +55,12 @@ export class TutorialIntro extends Component {
                                 <h3><Link to="/tutorial-loop" className="nav-link">Python Loops</Link></h3>
                                 <p>Learn about ‘while’ and ‘for’ loops in Python.</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-advanced" className="nav-link">Advanced Topics</Link></h3>
+                                <p>
+                                    Learn some of the more complex aspects of Python, including data structures, list
+                                    comprehensions, list slicing, and lambda expressions.</p>
+                            </li>
                         </ol>
                     </div>
                 </div>
