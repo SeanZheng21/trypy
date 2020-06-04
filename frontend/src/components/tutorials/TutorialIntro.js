@@ -61,6 +61,14 @@ export class TutorialIntro extends Component {
                                     Learn some of the more complex aspects of Python, including data structures, list
                                     comprehensions, list slicing, and lambda expressions.</p>
                             </li>
+                            <li>
+                                <h3><Link to="/tutorial-class" className="nav-link">Introduction to Classes</Link></h3>
+                                <p>Learn what classes are, why they’re important, and how to use them effectively.</p>
+                            </li>
+                            <li>
+                                <h3><Link to="/tutorial-file" className="nav-link">File Input/Output</Link></h3>
+                                <p>Apply what you’ve learned about Python to a real-world application using files.</p>
+                            </li>
                         </ol>
                     </div>
                 </div>

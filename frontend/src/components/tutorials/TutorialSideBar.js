@@ -16,6 +16,8 @@ export class TutorialSideBar extends Component {
                     <li><HLink to="/tutorial-list">List and Dictionary</HLink></li>
                     <li><HLink to="/tutorial-loop">Loops</HLink></li>
                     <li><HLink to="/tutorial-advanced">Advanced Topics</HLink></li>
+                    <li><HLink to="/tutorial-class">Class and Objects</HLink></li>
+                    <li><HLink to="/tutorial-file">File I/O</HLink></li>
                 </ul>
             </div>
         );
