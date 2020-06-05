@@ -2,32 +2,55 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
-import '../stylesheet/template-style.css';
-import {getRequireSource} from "@babel/preset-env/lib/utils";
-import backgroundheader from '../../../static/images/header.jpg';
+import '../stylesheet/Home.css';
 
 export class Home extends React.Component {
     render() {
     return (
         <div>
-            <header className='home-header'>
-                <div className="overlay">
-                    <h1 className="text-white margin-bottom-30 text-size-60 text-m-size-30 text-line-height-1">Trypy
-                        Online Python Environment</h1>
-                    <h3 className='home-h3'>Learn, Practice, Master Python</h3>
-                    <p className="home-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum quis, odio veniam itaque
-                        ullam
-                        debitis qui magnam consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis qui
-                        magnam
-                        consequatur ab.</p>
-                    <button className='home-button'><Link to="/playground" className="nav-link">Playground</Link></button>
-                    <button className='home-button'><Link to="/workspace" className="nav-link">Workspace</Link></button>
-                    <button className='home-button'><Link to="/tutorial-home" className="nav-link">Tutorials</Link></button>
+            <section id="banner">
+				<h1>Trypy<br/> Online Python Runner</h1>
+				<p>Learn, Practice, Master Your Python Skills Now!</p>
+                <button className="btn btn-default btn-info">
+                    <Link to="/playground" className="nav-link start-link">Get Started</Link>
+                </button>
+			</section>
+            <section className="section-small-padding background-white text-center">
+                <div className="line">
+                    <div>
+                        <div className="column-left gaped">
+                            <div className="padding-2x block-bordered">
+                                <h2 className="text-thin">Python Playground</h2>
+                                <p className="margin-bottom-30"> Familiarize with Python syntax, easy-to-use environment
+                                    for practice, and run python scripts within one click</p>
+                                <a className="button button-dark-stroke try-link text-size-12 padding-2x" href="#/playground">
+                                    Try it out!</a>
+                                <br/>
+                            </div>
+                        </div>
+                        <div className="column-center gaped">
+                            <div className="padding-2x block-bordered">
+                                <h2 className="text-thin">Project Workspace</h2>
+                                <p className="margin-bottom-30">Powerful online workspace with multi-file support and
+                                    file storage, great place to build complex and cool stuff</p>
+                                <a className="button button-dark-stroke try-link text-size-12 padding-2x" href="#/workspace">
+                                     Try it out!</a>
+                                <br/>
+                            </div>
+                        </div>
+                        <div className="column-right gaped">
+                            <div className="padding-2x block-bordered">
+                                <h2 className="text-thin">Beginner Tutorial</h2>
+                                <p className="margin-bottom-30">Beginner-friendly Python tutorial that get you started
+                                    on a cool programming journey with the most popular language.</p>
+                                <a className="button button-dark-stroke try-link text-size-12 padding-2x" href="#/tutorial-home">
+                                    Try it out!</a>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
                 </div>
-                {/*<div className="s-12">*/}
-                {/*    <img src={ backgroundheader }/>*/}
-                {/*</div>*/}
-            </header>
+            </section>
         </div>
 
         // <div className="shopping-list">

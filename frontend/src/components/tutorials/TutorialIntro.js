@@ -11,7 +11,7 @@ export class TutorialIntro extends Component {
                 <div className="column left">
                     <div>
                         <h1>Python Overview</h1>
-                        <h2>Why Learn Python?</h2>
+                        <h2>&#8226; Why Learn Python?</h2>
                         <p>
                             Python is a general-purpose, versatile and popular programming language.
                             It’s great as a first language because it is concise and easy to read,
@@ -19,7 +19,7 @@ export class TutorialIntro extends Component {
                             can be used for everything from web development to software development
                             and scientific applications.
                         </p>
-                        <h2>Take-Away Skills:</h2>
+                        <h2>&#8226; Take-Away Skills:</h2>
                         <p>
                             This course is a great introduction to both fundamental programming
                             concepts and the Python programming language. By the end, you’ll be
@@ -28,7 +28,7 @@ export class TutorialIntro extends Component {
                         </p>
                     </div>
                     <div>
-                        <h2>WHAT YOU'LL LEARN</h2>
+                        <h2>&#8226; What You Will Learn</h2>
                         <ol>
                             <li>
                                 <h3><Link to="/tutorial-syntax" className="nav-link">Python Syntax</Link></h3>
