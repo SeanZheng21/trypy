@@ -259,22 +259,24 @@ export class PyCode extends Component {
                             </div>
                             <div className="column right">
                                 <div>
-                                    <span>
-                                        <h3>Output:
+                                    <div>
+                                        <h3>Output:</h3>
+                                        <div>
                                             <button className="btn btn-success btn-sm float-right"
                                                     onClick={this.runButtonClick.bind(this)}>&#9654;</button>
                                             <button className="btn btn-success btn-sm float-right"
                                                     onClick={this.runProjButtonClick.bind(this)}>&#9654;all</button>
                                             <button className="btn btn-info btn-sm float-right"
                                                     onClick={this.saveButtonClick.bind(this)}>&#128190;</button>
-                                        </h3>
-                                    </span>
-                                    <pre className="code-output">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <pre className="code-output">
                                         <code>
                                             {resParagraph}
                                         </code>
                                     </pre>
-                                </div>
                             </div>
                         </div>
                     </div>

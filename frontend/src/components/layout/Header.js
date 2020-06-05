@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import '../stylesheet/Header.css'
 
 export class Header extends Component {
     static propTypes = {
@@ -51,15 +52,15 @@ export class Header extends Component {
                     <span className="navbar-toggler-icon"/>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <Link to="/" className="nav-link">Trypy</Link>
+                    <Link to="/" className="nav-link home-link">Trypy</Link>
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li className="nav-item active">
+                        <li className="nav-item active hover-link">
                             <Link to="/playground" className="nav-link">Playground</Link>
                         </li>
-                        <li className="nav-item active">
+                        <li className="nav-item active hover-link">
                             <Link to="/workspace" className="nav-link">Workspace</Link>
                         </li>
-                        <li className="nav-item active">
+                        <li className="nav-item active hover-link">
                             <Link to="/tutorial-home" className="nav-link">Tutorial</Link>
                         </li>
                     </ul>
