@@ -42,21 +42,19 @@ export class Executor extends Component {
                 <h1>Python Playground</h1>
                 <div className="row"  style={{marginRight: "10px"}}>
                     <div className="column left" >
+                        <button className="btn btn-success btn-sm" onClick={this.runButtonClick}>
+                            &#9654;&nbsp;Run
+                        </button>
                         <Fragment>
                             <div>
-                                <textarea rows="20" cols="70" value={this.state.code} onChange={this.handleChange}/>
+                                <textarea className="code-text-area" rows="20" cols="70" value={this.state.code}
+                                          onChange={this.handleChange}/>
                             </div>
                         </Fragment>
                     </div>
                     <div className="column right">
+                        <h3>Output:</h3>
                         <div>
-                            <span>
-                                <h3>Output:
-                                    <button className="btn btn-success btn-sm float-right" onClick={this.runButtonClick}>
-                                        Run Code
-                                    </button>
-                                </h3>
-                            </span>
                             <pre className="code-output">
                                 <code>
                                     {resParagraph}
