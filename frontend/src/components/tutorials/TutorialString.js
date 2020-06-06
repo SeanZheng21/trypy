@@ -82,7 +82,8 @@ print(my_string.upper())`
             <div className="row">
                 <div className="column left">
                     <div className="strings">
-                        <h1>Strings</h1>
+                        <h1 className="main-title">Python String</h1>
+                        <h1>Introduction</h1>
                         <p>
                             String is a useful data type. A string can contain letters, numbers, and symbols.
                             Strings need to be within quotes.

@@ -76,6 +76,9 @@ export class PyCode extends Component {
 
     saveButtonClick = () => {
         let updatedCode = this.props.code.find(elt => elt.id === this.state.activeFile.id);
+        if (updatedCode === undefined) {
+            return;
+        }
         updatedCode.content = this.state.code;
         console.log(updatedCode);
         this.props.putCode(this.state.activeFile.id, updatedCode);
@@ -234,47 +237,42 @@ export class PyCode extends Component {
                 </div>
                 <div className="column-bar right-bar" >
                     <div>
-                        <div className="tab">
-                            {
-                                this.state.openFiles.map(f => (
-                                    <span key={f.id}>
-                                        <button className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm':
-                                            'btn inactive-tab btn-sm'} onClick={this.tabSelectClick.bind(this, f.id)}>
-                                            {f.name}.py&nbsp;
-                                        </button>
-                                        <button onClick={this.tabCloseClick.bind(this, f.id)}
-                                                className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm':
-                                                    'btn inactive-tab btn-sm'}>&#10006;</button>
-                                    </span>
-                                ))
-                            }
-                        </div>
                         <div className="row"  style={{marginRight: "10px"}}>
-                            <div className="column left" >
+                            <div className="column left-workspace" >
+                                <div className="tab">
+                                    {
+                                        this.state.openFiles.map(f => (
+                                            <span key={f.id}>
+                                                <button className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm':
+                                                    'btn inactive-tab btn-sm'} onClick={this.tabSelectClick.bind(this, f.id)}>
+                                                    {f.name}.py&nbsp;
+                                                </button>
+                                                <button onClick={this.tabCloseClick.bind(this, f.id)}
+                                                        className={f.id === this.state.activeFile.id ? 'btn active-tab btn-sm':
+                                                            'btn inactive-tab btn-sm'}>&#10006;</button>
+                                            </span>
+                                        ))
+                                    }
+                                    <button className="btn btn-info btn-sm float-right"
+                                                        onClick={this.saveButtonClick.bind(this)}>&#128190;</button>
+                        </div>
                                 <Fragment>
                                     <div>
-                                        <textarea rows="20" cols="70" value={this.state.code} onChange={this.handleChange}/>
+                                        <textarea className="code-text-area" rows="20" cols="70" value={this.state.code}
+                                                  onChange={this.handleChange}/>
                                     </div>
                                 </Fragment>
                             </div>
-                            <div className="column right">
-                                <div>
-                                    <span>
-                                        <h5>
-                                            <div>
-                                                Output:
-                                                <button className="btn btn-success btn-sm float-right"
-                                                        onClick={this.runButtonClick.bind(this)}>&#9654;</button>
-                                                <button className="btn btn-success btn-sm float-right"
-                                                        onClick={this.runProjButtonClick.bind(this)}>&#9654;all</button>
-                                                <button className="btn btn-info btn-sm float-right"
-                                                        onClick={this.saveButtonClick.bind(this)}>&#128190;</button>
-                                            </div>
-                                        </h5>
-
-                                    </span>
-                                    <br/>
-                                </div>
+                            <div className="column right-workspace">
+                                <h4>
+                                    <div>
+                                        Output:
+                                        <button className="btn btn-success btn-sm float-right"
+                                                onClick={this.runButtonClick.bind(this)}>&#9654;</button>
+                                        <button className="btn btn-success btn-sm float-right"
+                                                onClick={this.runProjButtonClick.bind(this)}>&#9654;all</button>
+                                    </div>
+                                </h4>
                                 <pre className="code-output">
                                         <code>
                                             {resParagraph}

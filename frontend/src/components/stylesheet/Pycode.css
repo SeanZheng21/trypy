@@ -24,3 +24,17 @@
   background-color: blue; /* Green */
   color: white;
 }
+
+.code-text-area {
+    background-color: #cccccc;
+    overflow:scroll;
+    height: 500px;
+}
+
+.left-workspace {
+  width: 65%;
+}
+
+.right-workspace {
+  width: 35%;
+}

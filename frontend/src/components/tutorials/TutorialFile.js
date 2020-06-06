@@ -60,7 +60,8 @@ my_file.close()`
             <div className="row">
                 <div className="column left">
                     <div className="io-intro">
-                        <h1>File Input / Output</h1>
+                        <h1 className="main-title">File Input / Output</h1>
+                        <h1>Introduction</h1>
                         <p>Until now, the Python code you’ve been writing comes from one source and only goes to one
                             place:
                             you type it in at the keyboard and its results are displayed in the console. But what if you

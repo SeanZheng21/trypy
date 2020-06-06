@@ -79,6 +79,7 @@ print filter(lambda wd: wd == "Python", languages)
             <div className="row">
                 <div className="column left">
                     <div className="dict-iterator">
+                        <h1 className="main-title">Advanced Topics</h1>
                         <h1>Iterators for Dictionaries</h1>
                         <p>Let’s start with iterating over a dictionary. Recall that a dictionary is just a collection
                             of keys and values. We can use the .items() method to get the key/value pairs in a

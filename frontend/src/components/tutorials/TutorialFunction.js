@@ -101,7 +101,8 @@ distance_from_zero('foo')`];
             <div className="row">
                 <div className="column left">
                     <div className="intro">
-                        <h1>Functions</h1>
+                        <h1 className="main-title">Functions</h1>
+                        <h1>Introduction</h1>
                         <p>
                             You might have considered the situation where you would like to reuse a piece of code,
                             just with a few different values. Instead of rewriting the whole code, it’s much cleaner

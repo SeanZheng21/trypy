@@ -41,7 +41,7 @@ export class Executor extends Component {
             <div>
                 <h1>Python Playground</h1>
                 <div className="row"  style={{marginRight: "10px"}}>
-                    <div className="column left" >
+                    <div className="column left-playground" >
                         <button className="btn btn-success btn-sm" onClick={this.runButtonClick}>
                             &#9654;&nbsp;Run
                         </button>
@@ -52,7 +52,7 @@ export class Executor extends Component {
                             </div>
                         </Fragment>
                     </div>
-                    <div className="column right">
+                    <div className="column right-playground">
                         <h3>Output:</h3>
                         <div>
                             <pre className="code-output">

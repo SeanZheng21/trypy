@@ -124,7 +124,8 @@ inventory['gold'] += 50`];
         return (<div className="row">
             <div className="column left">
                 <div className="intro-list">
-                    <h1>Introduction to Lists</h1>
+                    <h1 className="main-title">List and Dictionary</h1>
+                    <h1>Introduction</h1>
                     <p>
                         Lists are a datatype you can use to store a collection of different pieces of information
                         as a sequence under a single variable name. (Datatypes you’ve already learned about include

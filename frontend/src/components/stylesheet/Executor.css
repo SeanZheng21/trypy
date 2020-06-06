@@ -21,12 +21,12 @@ pre {
     height: 490px;
 }
 
-.left {
-  width: 60%;
+.left-playground {
+  width: 70%;
 }
 
-.right {
-  width: 40%;
+.right-playground {
+  width: 30%;
 }
 
 /* Clear floats after the columns */

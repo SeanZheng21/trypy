@@ -146,9 +146,9 @@ print grade_converter(61)
         return (
             <div className="row">
                 <div className="column left">
-                    <h1>CONDITIONALS & CONTROL FLOW</h1>
+                    <h1 className="main-title">Conditionals and Control Flow</h1>
                     <div className="intro">
-                        <h1>Go With the Flow</h1>
+                        <h1>Control Flow</h1>
                         <p>Just like in real life, sometimes we’d like our code to be able to make decisions.</p>
                         <p>
                             The Python programs we’ve written so far have had one-track minds: they can add two

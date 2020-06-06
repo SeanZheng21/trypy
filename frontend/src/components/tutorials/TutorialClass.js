@@ -111,7 +111,7 @@ print(milton.full_time_wage(10))
         return(
             <div className="row">
                 <div className="column left">
-                    <h1>Introduction to Classes</h1>
+                    <h1 className="main-title">Introduction to Python Class</h1>
                     <div className="intro-class">
                         <h1>Why Use Classes?</h1>
                         <p>Python is an object-oriented programming language, which means it manipulates programming

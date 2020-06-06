@@ -15,6 +15,11 @@ pre {
     word-wrap: break-word;
 }
 
+.main-title {
+    font-weight: bold;
+    font-size: 3em;
+}
+
 div.fixed {
   position: fixed;
   right: 0;

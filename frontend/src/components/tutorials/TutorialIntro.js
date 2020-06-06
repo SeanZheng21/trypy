@@ -10,7 +10,7 @@ export class TutorialIntro extends Component {
             <div className="row">
                 <div className="column left">
                     <div>
-                        <h1>Python Overview</h1>
+                        <h1 className="main-title">Python Overview</h1>
                         <h2>&#8226; Why Learn Python?</h2>
                         <p>
                             Python is a general-purpose, versatile and popular programming language.
@@ -29,47 +29,47 @@ export class TutorialIntro extends Component {
                     </div>
                     <div>
                         <h2>&#8226; What You Will Learn</h2>
-                        <ol>
-                            <li>
-                                <h3><Link to="/tutorial-syntax" className="nav-link">Python Syntax</Link></h3>
-                                <p>In this course, learn about the syntax of the Python programming language!</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-string" className="nav-link">Python String</Link></h3>
-                                <p>This course will introduce you to strings and console output in Python.</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-control" className="nav-link">Python Control Flow</Link></h3>
-                                <p>Learn how to use conditionals and control flow to create programs that generate
+                        <div>
+                            <div>
+                                <h3><Link to="/tutorial-syntax" className="nav-link">1. Python Syntax</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;In this course, learn about the syntax of the Python programming language!</p>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-string" className="nav-link">2. Python String</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;This course will introduce you to strings and console output in Python.</p>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-control" className="nav-link">3. Python Control Flow</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;Learn how to use conditionals and control flow to create programs that generate
                                     different outcomes.</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-function" className="nav-link">Python Function</Link></h3>
-                                <p>Learn how to create and use functions in Python!</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-list" className="nav-link">Python List and Dictionary</Link></h3>
-                                <p>In this course, you will learn about the data structures lists and dictionaries.</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-loop" className="nav-link">Python Loops</Link></h3>
-                                <p>Learn about ‘while’ and ‘for’ loops in Python.</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-advanced" className="nav-link">Advanced Topics</Link></h3>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-function" className="nav-link">4. Python Function</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;Learn how to create and use functions in Python!</p>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-list" className="nav-link">5. Python List and Dictionary</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;In this course, you will learn about the data structures lists and dictionaries.</p>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-loop" className="nav-link">6. Python Loops</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;Learn about ‘while’ and ‘for’ loops in Python.</p>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-advanced" className="nav-link">7. Advanced Topics</Link></h3>
                                 <p>
-                                    Learn some of the more complex aspects of Python, including data structures, list
+                                    &nbsp;&nbsp;&nbsp;&bull;&nbsp;Learn some of the more complex aspects of Python, including data structures, list
                                     comprehensions, list slicing, and lambda expressions.</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-class" className="nav-link">Introduction to Classes</Link></h3>
-                                <p>Learn what classes are, why they’re important, and how to use them effectively.</p>
-                            </li>
-                            <li>
-                                <h3><Link to="/tutorial-file" className="nav-link">File Input/Output</Link></h3>
-                                <p>Apply what you’ve learned about Python to a real-world application using files.</p>
-                            </li>
-                        </ol>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-class" className="nav-link">8. Introduction to Classes</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;Learn what classes are, why they’re important, and how to use them effectively.</p>
+                            </div>
+                            <div>
+                                <h3><Link to="/tutorial-file" className="nav-link">9. File Input/Output</Link></h3>
+                                <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;Apply what you’ve learned about Python to a real-world application using files.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

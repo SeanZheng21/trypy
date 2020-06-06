@@ -113,7 +113,7 @@ print('I got ' + str(point_total) + ' points!')`
         return (
             <div className="row">
                 <div className="column left">
-                    <h1>Python Syntax Basics</h1>
+                    <h1 className="main-title">Basic Syntax</h1>
                     <div className="hello-world">
                         <h1>Hello World!</h1>
                         <p>

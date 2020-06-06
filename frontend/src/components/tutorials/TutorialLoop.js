@@ -107,6 +107,7 @@ for a, b in zip(list_a, list_b):
             <div className="row">
                 <div className="column left">
                     <div className="while-loop">
+                        <h1 className="main-title">Python Loops</h1>
                         <h1>While Loop</h1>
                         <p>
                             The while loop is similar to an if statement: it executes the code inside of it if some
