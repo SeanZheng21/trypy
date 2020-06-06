@@ -1,4 +1,5 @@
 import os
+import shutil
 # BASE_DIR = "/Users/Carlistle/Developer/PyCharmWorkspace/trypy/"
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,7 +43,9 @@ class Runner:
         os.system("rm " + os.path.join(BASE_DIR, "tempfile/res.txt"))
         os.system("rm " + os.path.join(BASE_DIR, "tempfile/code.txt"))
         os.system("rm " + os.path.join(BASE_DIR, "tempfile/error.txt"))
-        os.system("rm -r " + os.path.join(BASE_DIR, "tempfile/__pycache__"))
+        pycache_dir = os.path.join(BASE_DIR, "tempfile/__pycache__")
+        if os.path.exists(pycache_dir) and os.path.isdir(pycache_dir):
+            shutil.rmtree(pycache_dir)
 
         # Update the error
         if self.__error_msg:
