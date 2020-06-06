@@ -196,13 +196,13 @@ export class PyCode extends Component {
                 <div className="column-bar left-bar" >
                     <div>
                 <Fragment>
-                    <h3>Project Files:</h3>
-                    <table className="table table-striped">
+                    <h4>Project Files:</h4>
+                    <table className="table  files-table">
                         <tbody>
                         {
                             this.props.code.map( c => (
                                 <tr key={c.id} className="tr-file">
-                                    <td>{c.name}.py
+                                    <td >{c.name}.py
                                         <button className="btn btn-danger btn-sm float-right" onClick={
                                             this.props.deleteCode.bind(this, c.id)
                                             }>&#10006;</button>

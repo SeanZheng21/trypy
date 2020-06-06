@@ -1,3 +1,10 @@
 .tr-file {
-    padding: 1px 1px 1px 1px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
+
+.files-table {
+    border-spacing: 1px;
+    padding: 0 0 0 0;
+}
+
