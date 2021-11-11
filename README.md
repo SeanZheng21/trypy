@@ -1,9 +1,14 @@
 # trypy
- Online Python Executor Project
-Run Django: under trypy, use 'python manage.py runserver'\
+Online Python Executor 
+Front-end: React
+Back-end: Django
+
+
+## Usage
+To start Django server: under trypy, use 'python manage.py runserver'\
 Run npm for development: use 'npm run dev'
 
-# Use python code runner:
+## Use python code runner:
 ## Success case:
 POST http://127.0.0.1:8000/api/process\
 {
