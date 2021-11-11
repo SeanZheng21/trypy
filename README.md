@@ -1,5 +1,10 @@
-# trypy
-Online Python Executor 
+# trypy: Online Python Editor / Playground / Runner / Tutorial
+
+Run Python script in your browser with one click. Easy-to-use online text editor to test out your Python programs.
+
+Instant feedback in the result panel for viewing the execution results and error logs.
+
+Great tutorials for beginner Python developers to develop their Python skills!
 
 Front-end: React
 
